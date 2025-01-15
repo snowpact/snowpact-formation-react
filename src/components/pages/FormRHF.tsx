@@ -1,3 +1,3 @@
-export default function FormBasic() {
-    return <h1>Page d'accueil</h1>;
-  }
+export default function FormRHF() {
+  return <h1>XXX</h1>;
+}
