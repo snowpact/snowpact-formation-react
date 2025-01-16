@@ -1,11 +1,10 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import Home from './components/pages/Home'
-import FormBasic from './components/pages/FormBasic'
-import FormRHFEvolved from './components/pages/FormRHFEvolved'
-import FormRHF from './components/pages/FormRHF'
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Home from './components/pages/Home';
+import FormBasic from './components/pages/Forms/FormBasic';
+import FormRHFEvolved from './components/pages/Forms/FormRHFEvolved';
+import FormRHF from './components/pages/Forms/FormRHF';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
@@ -15,7 +14,7 @@ function App() {
         <Route path="/form/rhf-evolved" element={<FormRHFEvolved />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

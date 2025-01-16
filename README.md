@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# Formation Snowpact : Le front avec React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 1. Formulaires
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3 facons de faire des formulaires en React
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Avec les inputs HTML : http://localhost:5173/form/basic
+- Avec React Hook Form : http://localhost:5173/form/rhf
+- Avec React Hook Form Evolved : http://localhost:5173/form/rhf-evolved
+
+Il y a même React qui intègre un hook pour faire des formulaires : [useForm](https://react.dev/reference/react-hook-form/useForm) depuis la version 18. On verra plus tard. 
+
+### Tutoriel
+
+1. Faire les formulaires avec React [de façon standard](./documentation/formulaires.md)
+2. Faire les composants avec [React Hook Form](./documentation/react-hook-form.md)
+
+### Exercices
+
+1. Rajouter un composant de type Radio dans les 3 formulaires pour le genre : Homme, Femme, Non binaire, Autre
+2. Installer React Hook Form dans un projet à vous

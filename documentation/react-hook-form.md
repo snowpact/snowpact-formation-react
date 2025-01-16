@@ -123,6 +123,91 @@ const {
 </button>
 ```
 
+## 6. Resolver - Gérer les validations et erreurs
+
+### 6.1 Validation native avec register
+
+Sans resolver, on doit définir les règles de validation directement dans le register :
+
+```tsx
+function FormWithoutResolver() {
+  const { register, handleSubmit } = useForm();
+
+  return (
+    <form>
+      {/* Validation simple */}
+      <input {...register("email", {
+        required: "Email requis",
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: "Email invalide"
+        }
+      })} />
+
+      {/* Validation complexe */}
+      <input {...register("password", {
+        required: "Mot de passe requis",
+        minLength: {
+          value: 8,
+          message: "Minimum 8 caractères"
+        },
+        validate: {
+          hasNumber: (value) => 
+            /\d/.test(value) || "Doit contenir un chiffre",
+          hasUpperCase: (value) => 
+            /[A-Z]/.test(value) || "Doit contenir une majuscule",
+          hasSpecialChar: (value) => 
+            /[!@#$%^&*]/.test(value) || "Doit contenir un caractère spécial"
+        }
+      })} />
+    </form>
+  );
+}
+```
+
+### 6.2 Validation avec Zod
+
+Avec un resolver, la validation est centralisée et plus maintenable :
+
+```tsx
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+// Schéma de validation
+const formSchema = z.object({
+  email: z
+    .string()
+    .min(1, "Email requis")
+    .email("Format d'email invalide"),
+  password: z
+    .string()
+    .min(8, "Minimum 8 caractères")
+    .regex(/\d/, "Doit contenir un chiffre")
+    .regex(/[A-Z]/, "Doit contenir une majuscule")
+    .regex(/[!@#$%^&*]/, "Doit contenir un caractère spécial"),
+  confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Les mots de passe ne correspondent pas",
+  path: ["confirmPassword"]
+});
+
+function FormWithResolver() {
+  const { register, handleSubmit } = useForm({
+    resolver: zodResolver(formSchema)
+  });
+
+  return (
+    <form>
+      {/* Plus besoin de validation dans register */}
+      <input {...register("email")} />
+      <input {...register("password")} />
+      <input {...register("confirmPassword")} />
+    </form>
+  );
+}
+```
+
+
 ## Exemple complet avec cas d'usage
 
 ```tsx

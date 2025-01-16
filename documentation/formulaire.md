@@ -50,3 +50,20 @@
 - Indiquer le succès/échec de soumission
 - Désactiver le bouton pendant le chargement
 - Vider ou rediriger après succès
+
+
+## 0. Initialisation
+
+Initialiser les valeurs par défaut des inputs, par exemple venant d'une API ou d'une base de données.
+
+```jsx
+  const [mail, setMail] = useState<FormInputs | null>("monmail@gmail.com");
+```
+
+Ou si le chargement se fait de manière asynchrone, on peut utiliser le hook `useEffect` pour initialiser les valeurs par défaut.
+
+```jsx
+  useEffect(() => {
+    setMail("monmail@gmail.com");
+  }, [evenementApi]);
+```
