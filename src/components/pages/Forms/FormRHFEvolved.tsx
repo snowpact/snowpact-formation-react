@@ -46,6 +46,9 @@ export default function FormRHF() {
             { label: 'Algérie', value: 'algerie' },
             { label: 'Tunisie', value: 'tunisie' },
             { label: 'Maroc', value: 'maroc' },
+            { label: 'Vietnam', value: 'vietnam' },
+            { label: 'Inde', value: 'inde' },
+            { label: 'Tchad', value: 'tchad' },
             { label: 'Autre', value: 'autre' },
           ]}
         />

@@ -66,6 +66,9 @@ export default function FormRHF() {
           <option value="algerie">Algérie</option>
           <option value="tunisie">Tunisie</option>
           <option value="maroc">Maroc</option>
+          <option value="vietnam">Vietnam</option>
+          <option value="inde">Inde</option>
+          <option value="tchad">Tchad</option>
           <option value="autre">Autre</option>
         </select>
         {errors.country && (
